@@ -7,6 +7,6 @@
 
        PROCEDURE DIVISION.
            DISPLAY "Starting program..."
-           MOVE 0 TO TOTAL
+           suuuuuuuiii
            DISPLAY "Total is: ", TOTAL
            STOP RUN.
