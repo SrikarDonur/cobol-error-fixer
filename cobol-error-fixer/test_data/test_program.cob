@@ -1,20 +1,28 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. COMPLEX-PROGRAM.
+
+       DATA DIVISION.
        WORKING-STORAGE SECTION.
-       01 EOF-REACHED    PIC X(3) VALUE 'NO'.
+       01  NAME         PIC A(20).
+       01  AGE          PIC 99.
 
        PROCEDURE DIVISION.
-       MAIN-PARA.
-           OPEN INPUT TRANSACTION-FILE
-           PERFORM UNTIL EOF-REACHED = 'YES'
-               READ TRANSACTION-FILE
-                   AT END
-                       DISPLAY "End of File."
-                       MOVE 'YES' TO EOF-REACHED
-                   NOT AT END
-                       DISPLAY "Processing Record."
-                       MOVE ACCOUNT-NUMBER TO WS-ACCOUNT-NUMBER
-                       MOVE TRANSACTION-AMT TO WS-TRANSACTION-AMT
-                       DISPLAY "Account: " WS-ACCOUNT-NUMBER " Amount: " WS-TRANSACTION-AMT
-               END-READ
-           END-PERFORM
-           CLOSE TRANSACTION-FILE
-           STOP RUN. fwehbhaeaaaaaaaaaaaaeffff
+       MAIN-LOGIC.
+           DISPLAY "STARTING PROGRAM..."
+           PERFORM GET-DETAILS
+           PERFORM DISPLAY-DETAILS
+           STOP RUN.
+
+       GET-DETAILS.
+           DISPLAY "ENTER NAME:"
+           ACCEPT NAME
+           DISPLAY "ENTER AGE:"
+           ACCEPT AGE
+           EXIT.
+
+       DISPLAY-DETAILS.
+DISPLAY "WELCOME, " NAME
+           DISPLAY "YOU ARE " AGE " YEARS OLD"
+           EXIT.
+
+       END PROGRAM COMPLEX-PROGRAM.
