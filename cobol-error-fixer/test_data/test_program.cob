@@ -1,12 +1,16 @@
-       IDENTIFICATION DIVISION.
-       PROGRAM-ID. TESTPROG.
-
-       DATA DIVISION.
-       WORKING-STORAGE SECTION.
-       01 TOTAL         PIC 9(5) VALUE ZERO.
-
        PROCEDURE DIVISION.
-           DISPLAY "Starting program..."
-           suuuuuuuiii
-           DISPLAY "Total is: ", TOTAL
-           STOP RUN.
+           OPEN INPUT TRANSACTION-FILE.
+           
+           READ TRANSACTION-FILE INTO TRANS-RECORD
+               AT END
+                   DISPLAY "End of File."
+               NOT AT END
+                   DISPLAY "Processing Record."
+                   MOVE ACCOUNT-NUMBER TO WS-ACCOUNT-NUMBER
+                   MOVE TRANSACTION-AMT TO WS-TRANSACTION-AMT
+                   DISPLAY "Account: " WS-ACCOUNT-NUMBER " Amount: " WS-TRANSACTION-AMT
+           END-READ.
+           
+           CLOSE TRANSACTION-FILE.
+           
+           STOP RUN.suuuuuiiiiiiiiii
